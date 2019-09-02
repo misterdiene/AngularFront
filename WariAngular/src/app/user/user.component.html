@@ -1,0 +1,91 @@
+
+    <div class="container py-3">
+            <form  #monForm = ngForm  (ngSubmit)= "OnSubmit( username, plainPassword, nom, prenom, partenaire, profile, Image)">
+
+                <div class="form-group">
+                    <input type="text" ngModel  #username=ngModel  name="username" minlength="5" placeholder="Username" class="form-control" required>
+                    <div [hidden]="username.valid">
+                        le username est obligatoire
+                   </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" ngModel  #plainPassword=ngModel  name="plainPassword" placeholder="Password" class="form-control" required>
+                    <div [hidden]="plainPassword.valid">
+                        Le mot de passe est obligatoire
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" ngModel  #nom=ngModel name="nom" placeholder="Nom" class="form-control" required>
+                    <div [hidden]="nom.valid">
+                        Le nom est obligatoire
+                    </div>
+                </div>
+               
+
+                <div class="form-group">
+                    <input type="text" ngModel  #prenom=ngModel  name="prenom" placeholder="Prenom" class="form-control" required>
+                    <div [hidden]="prenom.valid">
+                        Le prenom est obligatoire
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" ngModel  #partenaire=ngModel name="partenaire" placeholder="Partenaire" class="form-control" required>
+                </div>
+                <div [hidden]="partenaire.valid">
+                    Le champ partenaire est obligatoire
+                </div>
+
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="inputGroupSelect02" ngModel  #profile=ngModel name="profile" required>
+                        <option value="user">user</option>
+                        <option value="caissier">caissier</option>
+                        <option value="admin">admin</option>
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="inputGroupSelect02">Profile</label>
+                    </div>
+                    <div [hidden]="profile.valid">
+                        Le champ profile est obligatoire
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="custom-file mb-3">
+                        <img [src] = "imageUrl" alt="" style="width:250px;height:100px" class="col-md-12">
+                        <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+                    </div>
+                </div>
+                
+                <div
+                    class="form-group">
+                    <button type="submit" [disabled]=!monForm.valid class="btn btn-primary float-right">Valider</button>
+                </div>
+
+            </form>
+    </div>
+
+<table class="table">
+    <thead>
+        <th scope="col">Username</th>
+        <th scope="col">Roles</th>
+        <th scope="col">nom</th>
+        <th scope="col">prenom</th>
+        <th scope="col">Profile</th>
+        <th scope="col">imageName</th>
+        <th scope="col">Date imageName</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let users of user">
+            <td>{{users.username}}</td>
+            <td>{{users.roles}}</td>
+            <td>{{users.nom}}</td>
+            <td>{{users.prenom}}</td>
+            <td>{{users.profile}}</td>
+            <td>{{users.imageName}}</td>
+            <td>{{users.updatedAt}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+<div class="py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <span class="anchor" id="formLogin"></span>
+
+            <!-- form card login -->
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h3 class="mb-0">Login</h3>
+                </div>
+                <div class="card-body">
+                    <form  #monForm = ngForm (ngSubmit)="OnSubmit (montant,compte,user)">
+                        <div class="form-group">
+                            <input type="text" ngModel name="montant" placeholder="Montant" class="form-control rounded-0" required #montant=ngModel>
+                        </div>
+                        <div [hidden]="montant.valid">
+                            Le montant est obligatoire
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" ngModel name="compte" placeholder="compte" class="form-control rounded-0" required #compte=ngModel>
+                        </div>
+                        <div [hidden]="compte.valid">
+                            Le solde est obligatoire
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" ngModel name="user" placeholder="user" class="form-control rounded-0" required #user=ngModel>
+                        </div>
+                        <div [hidden]="user.valid">
+                            Le champ utilisateur est obligatoire
+                        </div>
+
+                        <button  type="submit" [disabled]=!monForm.valid  class="btn btn-primary float-right">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

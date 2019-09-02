@@ -1,0 +1,132 @@
+
+    <div class="container py-3">
+        <form  #monForm= ngForm  (ngSubmit) = "OnSubmit(username,plainPassword,nom,prenom,nomentreprise,ninea,adresse,email,telephone,Image,raisonsocial)">
+            
+            <div class="row">
+                <div class="col">
+                    <input type="text" ngModel #username=ngModel name="username"  class="form-control" placeholder="Username" required>
+                    
+                    <div [hidden]="username.valid">
+                        Username obligatoire
+                    </div>
+                </div>
+
+                <div class="col">
+                    <input type="number" ngModel  #plainPassword=ngModel  name="plainPassword" class="form-control mb-3" placeholder="plainPassword" required>
+                    <div [hidden]="plainPassword.valid">
+                        Mot de passe obligatoire
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type="text" ngModel #nom=ngModel  name="nom" class="form-control mb-3" placeholder="Nom" required>
+                    <div [hidden]="nom.valid">
+                        Nom obligatoire
+                    </div>
+                </div>
+                
+
+                <div class="col">
+                    <input type="text" ngModel  #prenom=ngModel name="prenom" class="form-control mb-3" placeholder="Prenom" required>
+                    <div [hidden]="prenom.valid">
+                        Prenom obligatoire
+                    </div>
+                </div>
+                
+
+            </div>
+            <div class="row">
+
+                <div class="col">
+                    <input type="text" ngModel  #nomentreprise=ngModel name="nomentreprise" class="form-control" placeholder="Nom de l'entreprise" required>
+                    <div [hidden]="prenom.valid">
+                        Nom d'entreprise obligatoire
+                    </div>
+                </div>
+                
+
+                <div class="col">
+                    <input type="text" ngModel  #ninea=ngModel name="ninea" class="form-control mb-3" placeholder="Ninea" required>
+                    <div [hidden]="ninea.valid">
+                        Ninea obligatoire
+                    </div>
+                </div>
+                
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type="text" ngModel  #adresse=ngModel  name="adresse" class="form-control mb-3" placeholder="Adresse" required>
+                    <div [hidden]="adresse.valid">
+                        Ninea obligatoire
+                    </div>
+                </div>
+                
+
+                <div class="col">
+                    <input type="email" ngModel  #email=ngModel  name="email" class="form-control" placeholder="Email" required>
+                    <div [hidden]="email.valid">
+                        Email obligatoire
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type="number" ngModel  #telephone=ngModel  name="telephone" class="form-control mb-3" placeholder="Telephone" required>
+                    <div [hidden]="email.valid">
+                        Téléphone obligatoire
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="custom-file mb-3">
+                        <img [src] = "imageUrl" alt="" style="width:200px;height:100px" class="col-md-6" >
+                        <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)" name="Image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type="text"  ngModel  #raisonsocial=ngModel name="raisonsocial" class="form-control" placeholder="Raison Social" required>
+                    <div [hidden]="raisonsocial.valid">
+                        Raison social obligatoire
+                    </div>
+                </div>
+                 
+                <div class="col">
+                    <button type="submit" [disabled]=!monForm.valid  class="btn btn-primary float-right">Valider</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+        <table class="table">
+            <thead>
+                <th scope="col">ID</th>
+                <th scope="col">Nom Entreprise</th>
+                <th scope="col">Ninea</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Email</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Raison Social</th>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let partenaires of partenaire">
+                    <td>{{partenaires.id}}</td>
+                    <td>{{partenaires.nomentreprise}}</td>
+                    <td>{{partenaires.ninea}}</td>
+                    <td>{{partenaires.adresse}}</td>
+                    <td>{{partenaires.email}}</td>
+                    <td>{{partenaires.telephone}}</td>
+                    <td>{{partenaires.raisonsocial}}</td>
+                </tr>
+            </tbody>
+        </table>
