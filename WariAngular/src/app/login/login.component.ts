@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         // tslint:disable-next-line: align
         this._auth.saveToken(jwt);
         // une fois que je suis authentifier je suis dan home
-      this._router.navigate(['/']);
+      this._router.navigate(['/menu']);
       },
       // err => console.log(err)
     );

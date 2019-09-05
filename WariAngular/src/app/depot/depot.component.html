@@ -39,3 +39,21 @@
 
     </div>
 </div>
+
+<p id="mydesc">Liste des comptes</p>
+<table class="table table-bordered" aria-describedby="mydesc">
+    <thead class="thead-dark">
+        <th scope="col">Compte</th>
+        <th scope="col">Utilisateur</th>
+        <th scope="col">Date de depot</th>
+        <th scope="col">Montant</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let d of depot">
+            <td>{{d.compte}}</td>
+            <td>{{d.user}}</td>
+            <td>{{d.montant}}</td>
+            <td>{{d.datedepot}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ListerService } from '../lister.service';
 @Component({
   selector: 'app-compte',
   templateUrl: './compte.component.html',
@@ -7,18 +8,27 @@ import { AuthService } from '../auth.service';
 })
 export class CompteComponent implements OnInit {
 
-  constructor(private _userServive: AuthService) { }
+  compte = [];
+
+  constructor(private _userServive: AuthService, private _listService: ListerService) { }
 
   ngOnInit() {
+    this._listService.getCompte().subscribe(
+      res=>{
+        console.log(res);
+        this.compte = res
+      }, err=>{
+        console.log(err);
+      }
+    )
   }
 
-  Onsubmit(partenaire) {
+  OnSubmit(partenaire) {
     this._userServive.compteFile(
       partenaire.value).subscribe(
         data =>{
 
           //console.log('okkkkkkkkkk');
-
           partenaire.value   = null;
         }
       );

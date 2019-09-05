@@ -65,7 +65,7 @@ export class UserService {
     return this.http.post(endpoint, formData);
   }
 
-  // Créer Compte 
+  // Créer Compte    
 
   compteFile(
     partenaire: string, 
@@ -73,7 +73,7 @@ export class UserService {
     ) {
     const endpoint = 'http://127.0.0.1:8000/api/compte';
     const formData: FormData = new FormData();
-    console.log(formData);
+
     formData.append('partenaire', partenaire);
     
     return this.http.post(endpoint, formData);

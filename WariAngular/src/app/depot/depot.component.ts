@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { ListerService } from '../lister.service';
 
 @Component({
   selector: 'app-depot',
@@ -8,12 +9,22 @@ import { UserService } from '../user.service';
 })
 export class DepotComponent implements OnInit {
 
-  constructor(private _userServive: UserService) { }
+  depot = [];
+  
+  constructor(private _userServive: UserService, private _listService: ListerService) { }
 
   ngOnInit() {
+     this._listService.getDepot().subscribe(
+      res=>{
+        console.log(res);
+        this.depot = res
+      }, err=>{
+        //console.log(err);
+      }
+    ) 
   }
 
-  Onsubmit(montant, compte, user) {
+  OnSubmit(montant, compte, user) {
     this._userServive.depotFile(
       
       montant.value,

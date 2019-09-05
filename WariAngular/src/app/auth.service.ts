@@ -5,7 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
-  
+
   [x: string]: any;
 
   jwt: string;
@@ -56,6 +56,7 @@ export class AuthService {
     const objJWT = jwtHelper.decodeToken(this.jwt);
     this.username = objJWT.obj;
     this.roles = objJWT.roles;
+    console.log(objJWT);
   }
 
   isAdmin() {

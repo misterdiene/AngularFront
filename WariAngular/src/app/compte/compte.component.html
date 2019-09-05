@@ -25,3 +25,19 @@
 
     </div>
 </div>
+
+<p id="mydesc">Liste des comptes</p>
+<table class="table table-bordered" aria-describedby="mydesc">
+    <thead class="thead-dark">
+        <th scope="col">Partenaire</th>
+        <th scope="col">Numero compte</th>
+        <th scope="col"> Solde</th>
+    </thead>
+    <tbody>
+        <tr  *ngFor = "let c of compte">
+            <td>{{c.numerocompte}}</td>
+            <td>{{c.solde}}</td>
+            <td>{{c.solde}}</td>
+        </tr>
+    </tbody>
+</table>
