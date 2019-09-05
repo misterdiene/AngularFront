@@ -108,9 +108,9 @@
         </form>
     </div>
 
-        <table class="table  table-bordered">
+    <p id="mydesc">Liste des partenaires</p>
+    <table class="table table-bordered" aria-describedby="mydesc">
             <thead class="thead-dark">
-                <th scope="col">ID</th>
                 <th scope="col">Nom Entreprise</th>
                 <th scope="col">Ninea</th>
                 <th scope="col">Adresse</th>
@@ -120,7 +120,6 @@
             </thead>
             <tbody>
                 <tr *ngFor = "let partenaires of partenaire">
-                    <td>{{partenaires.id}}</td>
                     <td>{{partenaires.nomentreprise}}</td>
                     <td>{{partenaires.ninea}}</td>
                     <td>{{partenaires.adresse}}</td>

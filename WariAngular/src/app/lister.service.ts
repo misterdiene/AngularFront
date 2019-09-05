@@ -13,6 +13,8 @@ export class ListerService {
   // tslint:disable-next-line: variable-name
   private _depotUrl = 'http://127.0.0.1:8000/api/listdepot/1';
 
+  private _compte= 'http://127.0.0.1:8000/api/comptes/7';
+
   constructor(private http: HttpClient) { }
 
   getUser() {
@@ -28,6 +30,6 @@ export class ListerService {
   }
 
   getCompte() {
-    return this.http.get<any>(this._partenaireUrl);
+    return this.http.get<any>(this._compte);
   }
 }
