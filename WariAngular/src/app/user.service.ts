@@ -68,13 +68,13 @@ export class UserService {
   // Créer Compte    
 
   compteFile(
-    partenaire: string, 
+    ninea: string, 
     
     ) {
     const endpoint = 'http://127.0.0.1:8000/api/compte';
     const formData: FormData = new FormData();
 
-    formData.append('partenaire', partenaire);
+    formData.append('ninea', ninea);
     
     return this.http.post(endpoint, formData);
   }

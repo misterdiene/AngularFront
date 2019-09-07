@@ -1,0 +1,80 @@
+<div class="container py-3">
+        <form  #monForm= ngForm  (ngSubmit) = "OnSubmit(nom,prenom,telephone,nomBnf,prenomBnf,telephoneBnf,telephone,adresseBnf,montant)">
+            
+            <div class="row">
+                <div class="col">
+                    <input type="text" ngModel #nom=ngModel  name="nom" class="form-control mb-3" placeholder="Nom envoyeur" required>
+                    <div [hidden]="nom.valid">
+                        Nom obligatoire
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <input type="text" ngModel  #prenom=ngModel name="prenom" class="form-control mb-3" placeholder="Prenom envoyeur" required>
+                    <div [hidden]="prenom.valid">
+                        Prenom obligatoire
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <input type="number" ngModel  #telephone=ngModel  name="telephone" class="form-control mb-3" placeholder="Telephone" required>
+                    <div [hidden]="telephone.valid">
+                        Téléphone obligatoire
+                    </div>
+                </div>
+
+                <div class="col">
+                    <input type="text" ngModel  #nomBnf=ngModel name="nomBnf" class="form-control" placeholder="Nom beneficiaire" required>
+                    <div [hidden]="nomBnf.valid">
+                        Nom beneficiaire obligatoire
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <input type="text" ngModel  #prenomBnf=ngModel  name="prenomBnf" class="form-control mb-3" placeholder="Prenom beneficiaire" required>
+                    <div [hidden]="prenomBnf.valid">
+                        Prenom beneficiaire obligatoire
+                    </div>
+                </div>
+
+                <div class="col">
+                    <input type="number" ngModel  #telephoneBnf=ngModel  name="telephoneBnf" class="form-control mb-3" placeholder="Telephone Beneficiaire" required>
+                    <div [hidden]="telephone.valid">
+                        Téléphone Beneficiaire obligatoire
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <input type="text"  ngModel  #raisonsocial=ngModel name="adresseBnf" class="form-control" placeholder="Adresse Beneficiaire" required>
+                    <div [hidden]="adresseBnf.valid">
+                        Adresse obligatoire
+                    </div>
+                </div>
+                 
+                <div class="col">
+                    <input type="number"  ngModel  #montant=ngModel name="montant" class="form-control" placeholder="Montant" required>
+                    <div [hidden]="montant.valid">
+                        Montant obligatoire
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" [disabled]=!monForm.valid  class="btn btn-primary float-right">Valider</button>
+                </div>
+            </div>
+
+        </form>
+    </div>

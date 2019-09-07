@@ -23,13 +23,13 @@ export class CompteComponent implements OnInit {
     )
   }
 
-  OnSubmit(partenaire) {
+  OnSubmit(ninea:any) {
     this._userServive.compteFile(
-      partenaire.value).subscribe(
+      ninea.value).subscribe(
         data =>{
 
-          //console.log('okkkkkkkkkk');
-          partenaire.value   = null;
+          console.log(data);
+          ninea.value   = null;
         }
       );
   }

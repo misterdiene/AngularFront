@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     this._auth.loginUser(data)
     .subscribe(
       res => {
+      Swal.fire('Authentification Réussie!!!')
       console.log(data);
         // console.log(res);
         // tslint:disable-next-line: prefer-const

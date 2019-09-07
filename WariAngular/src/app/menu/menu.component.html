@@ -1,6 +1,67 @@
+<!--section id="container" *ngIf="isAuthenticated()">
+  <header class="header black-bg">
+    <div class="sidebar-toggle-box">
+      <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+    </div>
+    <a href="#" class="logo"><b>SAMA<span>WARI</span></b></a>
+
+    <div class="top-menu">
+      <ul class="nav pull-right top-menu">
+        <li><a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" >Logout</a></li>
+      </ul>
+    </div>
+  </header>
+  <aside>
+    <div id="sidebar" class="nav-collapse ">
+      <ul class="sidebar-menu" id="nav-accordion">
+        <p class="centered"><img src="assets/img/ui-sam.jpg" class="img-circle" width="80" alt=""></p>
+        <h5 class="centered mb-3">Sama Wari</h5>
+        <li class="sub-menu" *ngIf="isAdmin()">
+          <a href="javascript:;">
+            <i class="fa fa-desktop"></i>
+            <span>ADMIN SYSTEM</span>
+            </a>
+          <ul class="sub">
+            <li><a class="nav-link" routerLink="/partenaire" routerLinkActive="active">Ajouter partenaires</a></li>
+            <li><a class="nav-link" routerLink="/partenaire" routerLinkActive="active">Lister partenaires</a></li>
+            <li><a class="nav-link" routerLink="/partenaire" routerLinkActive="active">Ajouter un caissier</a></li>
+            <li><a class="nav-link" routerLink="/compte" routerLinkActive="active">Créer un compte</a></li>
+          </ul>
+        </li>
+
+        <li class="sub-menu" *ngIf="(isUser() || isPartenaire())" >
+          <a href="javascript:;">
+            <i class="fa fa-cogs"></i>
+            <span>UTILISATEUR</span>
+          </a>
+          <ul class="sub">
+            <li><a >Ajouter utilisateur</a></li>
+            <li><a >Lister utilisateur</a></li>
+            <li><a class="nav-link" routerLink="/transaction" routerLinkActive="active">Transaction</a></li>
+          </ul>
+        </li>
+
+        <li class="sub-menu" *ngIf="isCaissier()">
+          <a href="javascript:;">
+            <i class="fa fa-cogs"></i>
+            <span>CAISSIER</span>
+          </a>
+          <ul class="sub">
+            <li><a >Faire un depot</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <section id="main-content">
+      <div class="row">
+            <h3>SAMA WARI SERVICES</h3>
+      </div>
+  </section>
+</section-->
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isAuthenticated()">
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isAuthenticated()">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
   
@@ -17,7 +78,13 @@
           <a class="nav-link" routerLink="/depot" routerLinkActive="active">Depot</a>
         </li>
         <li class="nav-item" *ngIf="isUser()">
-          <a class="nav-link" routerLink="/transaction" routerLinkActive="active">Transaction</a>
+          <a class="nav-link" routerLink="/transaction" routerLinkActive="active">Liste Transaction</a>
+        </li>
+        <li class="nav-item" *ngIf="isUser()">
+          <a class="nav-link" routerLink="/envoie" routerLinkActive="active">Envoie</a>
+        </li>
+        <li class="nav-item" *ngIf="isUser()">
+          <a class="nav-link" routerLink="/retrait" routerLinkActive="active">Retrait</a>
         </li>
       </ul>
       <ul class="navbar-nav">

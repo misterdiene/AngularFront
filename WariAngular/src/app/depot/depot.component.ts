@@ -27,12 +27,14 @@ export class DepotComponent implements OnInit {
   OnSubmit(montant, compte, user) {
     this._userServive.depotFile(
       
+      //console.log('okkkkkkkkkk');
+
       montant.value,
       compte.value, 
       user.value).subscribe(
         data =>{
 
-          //console.log('okkkkkkkkkk');
+          //console.log('data');
 
           montant.value  = null;
           compte.value   = null;

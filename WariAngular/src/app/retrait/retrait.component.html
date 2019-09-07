@@ -1,0 +1,29 @@
+<div class="container py-3">
+        <form  #monForm= ngForm  (ngSubmit) = "OnSubmit(code,cni)">
+            
+            <div class="row">
+
+                <div class="col">
+                    <input type="number" ngModel  #code=ngModel  name="code" class="form-control mb-3" placeholder="Code" required>
+                    <div [hidden]="code.valid">
+                        Code obligatoire
+                    </div>
+                </div>
+
+                <div class="col">
+                    <input type="number" ngModel  #cni=ngModel name="cni" class="form-control" placeholder="Numero piece" required>
+                    <div [hidden]="cni.valid">
+                        Numero obligatoire
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit" [disabled]=!monForm.valid  class="btn btn-primary float-right">Retrait</button>
+                </div>
+            </div>
+
+        </form>
+    </div>

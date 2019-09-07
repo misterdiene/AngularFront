@@ -19,6 +19,8 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { ListerService } from './lister.service';
+import { EnvoieComponent } from './envoie/envoie.component';
+import { RetraitComponent } from './retrait/retrait.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ListerService } from './lister.service';
     CompteComponent,
     DepotComponent,
     TransactionComponent,
-    MenuComponent
+    MenuComponent,
+    EnvoieComponent,
+    RetraitComponent
   ],
   imports: [
     BrowserModule,

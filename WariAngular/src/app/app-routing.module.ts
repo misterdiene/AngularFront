@@ -8,6 +8,8 @@ import { CompteComponent } from './compte/compte.component';
 import { DepotComponent } from './depot/depot.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { MenuComponent } from './menu/menu.component';
+import { EnvoieComponent } from './envoie/envoie.component';
+import { RetraitComponent } from './retrait/retrait.component';
 
 
 const routes: Routes = [
@@ -43,6 +45,15 @@ const routes: Routes = [
   {
     path: 'menu', component: MenuComponent
   },
+
+  {
+    path: 'envoie', component: EnvoieComponent
+  },
+
+  {
+    path: 'retrait', component: RetraitComponent
+  },
+
 
 ];
 

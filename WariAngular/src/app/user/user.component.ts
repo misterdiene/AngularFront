@@ -1,24 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { ListerService } from '../lister.service';
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+export interface User {
+  id: number;
+  username: string;
+  roles: string;
+  nom: string;
+  prenom: string;
+  profile: string;
+  imageName: string;
 }
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 
 @Component({
   selector: 'app-user',
@@ -26,6 +22,12 @@ const NAMES: string[] = [
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+
+  displayedColumns: string[] = ['id', 'username', 'roles', 'nom', 'prenom', 'profile', 'imageName'];
+  dataSource: MatTableDataSource<User>;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   user = [];
 
@@ -40,10 +42,20 @@ export class UserComponent implements OnInit {
     .subscribe(
       res => {
         this.user = res
-        console.log(this.user);
+        //console.log(this.user);
+        this.dataSource = new MatTableDataSource(this.user);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       //err => console.log(err)
     );
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+    if (this.dataSource.paginator) {
+    this.dataSource.paginator.firstPage();
+    }
   }
 
   handleFileInput(file: FileList) {

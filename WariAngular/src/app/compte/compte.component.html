@@ -9,11 +9,11 @@
                     <h3 class="mb-0">Créer un compte</h3>
                 </div>
                 <div class="card-body">
-                    <form   #monForm=ngForm (ngSubmit)= "OnSubmit(partenaire)" >
+                    <form   #monForm=ngForm (ngSubmit)= "OnSubmit(ninea)" >
                         <div class="form-group">
-                            <input type="number" ngModel  #partenaire=ngModel name="partenaire" placeholder="Partenaire" class="form-control rounded-0" required >
-                            <div [hidden]="partenaire.valid">
-                                le champ partenaire est obligatoire
+                            <input type="text" ngModel  #ninea=ngModel name="ninea" placeholder="Ninea" class="form-control rounded-0" required >
+                            <div [hidden]="ninea.valid">
+                                le champ ninea est obligatoire
                             </div>
                         </div>
 
@@ -29,13 +29,13 @@
 <p id="mydesc">Liste des comptes</p>
 <table class="table table-bordered" aria-describedby="mydesc">
     <thead class="thead-dark">
-        <th scope="col">Partenaire</th>
+        <th scope="col">ninea</th>
         <th scope="col">Numero compte</th>
         <th scope="col"> Solde</th>
     </thead>
     <tbody>
         <tr  *ngFor = "let c of compte">
-            <td>{{c.partenaire}}</td>
+            <td>{{c.ninea}}</td>
             <td>{{c.numerocompte}}</td>
             <td>{{c.solde}}</td>
         </tr>
